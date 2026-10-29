@@ -1,19 +1,28 @@
 <%- include("partials/solution-header.ejs") %>
 
-  <% if (locals.adjective && locals.noun) { %>
-    <h1>
-      <%= adjective %>
-        <%= noun %>
-    </h1>
+  <section class="generator-card" aria-labelledby="page-title">
+    <div class="brand-mark" aria-hidden="true">✦</div>
+    <p class="eyebrow">The band name generator</p>
+
+    <% if (locals.adjective && locals.noun) { %>
+      <h1 id="page-title" class="band-name">
+        <span><%= adjective %></span>
+        <span class="band-name-accent"><%= noun %></span>
+      </h1>
+      <p class="description">Sounds like a band worth listening to.</p>
     <% } else { %>
-      <h1>Welcome to the Band Generator 🤟</h1>
-      <% } %>
+      <h1 id="page-title">Your next big<br>name starts here.</h1>
+      <p class="description">A little inspiration for your future tour poster.</p>
+    <% } %>
 
+    <form action="/submit" method="POST">
+      <button class="generate-button" type="submit">
+        <span>Generate a band name</span>
+        <span class="button-icon" aria-hidden="true">↗</span>
+      </button>
+    </form>
 
+    <p class="hint">One click. One name. A whole new sound.</p>
+  </section>
 
-        <form action="/submit" method="POST">
-          <input type="submit" value="Generate Name">
-        </form>
-
-
-        <%- include("partials/solution-footer.ejs") %>
+  <%- include("partials/solution-footer.ejs") %>
